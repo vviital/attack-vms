@@ -1,0 +1,23 @@
+{
+  "name": "attack-vms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vviital/attack-vms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vviital/attack-vms/issues"
+  },
+  "homepage": "https://github.com/vviital/attack-vms#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^2.4.1"
+  }
+}
