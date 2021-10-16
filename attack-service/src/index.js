@@ -29,7 +29,7 @@ async function main() {
   await kafka.init();
 
   app.listen(config.port, () => {
-    logger.info("Service is listening on", config.port);
+    logger.info(`Service is listening on ${config.port} port`);
   });
 }
 
