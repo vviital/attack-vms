@@ -8,6 +8,8 @@ services:
       - "8080:3000"
     environment:
       - MONGO_DB_URL=mongodb://mongo/attack-service
+      - KAFKA_BROKERS_LIST=kafka:9093
+      - CLICK_HOUSE_URL=clickhouse_server
 
   uploader-service:
     build:

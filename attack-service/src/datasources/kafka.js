@@ -14,15 +14,17 @@ async function init() {
 }
 
 async function sendStatsMessage(message = {}) {
+  const msg = JSON.stringify({
+    ...message,
+    loggedAt: new Date().toISOString(),
+  });
+
   // Might be replaced by StatsD
   await producer.send({
     topic: config.kafkaStatsTopic,
     messages: [
       {
-        value: JSON.stringify({
-          ...message,
-          loggedAt: new Date(),
-        }),
+        value: msg,
       },
     ],
   });

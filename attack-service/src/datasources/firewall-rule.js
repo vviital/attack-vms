@@ -34,7 +34,7 @@ FirewallRule.getAttackersVMsByTags = async function (tags) {
     },
   ]).exec();
 
-  return result[0].vms || [];
+  return result[0]?.vms || [];
 };
 
 module.exports = {
