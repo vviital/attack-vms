@@ -16,6 +16,11 @@ async function getAttackersVMIds(vmId) {
   return _.map(vms, "vm_id");
 }
 
+async function getVMsCount() {
+  return VirtualMachine.countDocuments().exec();
+}
+
 module.exports = {
   getAttackersVMIds,
+  getVMsCount,
 };

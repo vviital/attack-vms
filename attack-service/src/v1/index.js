@@ -3,6 +3,7 @@
 const { Router } = require("express");
 const createError = require("http-errors");
 const { getAttackersVMIds } = require("../services/vm-service");
+const { getFullStats } = require("../services/stats-service");
 
 const router = Router();
 
@@ -21,12 +22,18 @@ router.get("/attack", async (req, res, next) => {
   }
 });
 
-router.get("/stats", async (req, res) => {
-  res.send({
-    vm_count: 2,
-    request_count: 1120232,
-    average_request_time: 0.003032268166772597,
-  });
+router.get("/stats", async (req, res, next) => {
+  try {
+    const fullStats = await getFullStats();
+
+    res.send({
+      vm_count: fullStats.vmsCount,
+      request_count: fullStats.requestCount,
+      average_request_time: fullStats.averageRequestTime,
+    });
+  } catch (e) {
+    next(e);
+  }
 });
 
 module.exports = router;
