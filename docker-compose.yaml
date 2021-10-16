@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  attack-service:
+    build:
+      context: attack-service
+    ports:
+      - "8080:3000"
+
+  uploader-service:
+    build:
+      context: uploader-service
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_DB_URL=mongodb://mongo/attack-service
+      - INPUT_FILE_NAME=input-3.json
+    volumes:
+      - ./uploader-service/src:/usr/app/src
+
+  mongo:
+    image: mongo:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/data/db
+
+
+
+
+volumes:
+  mongodb:
