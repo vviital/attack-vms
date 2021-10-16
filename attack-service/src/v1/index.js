@@ -26,7 +26,7 @@ router.get("/stats", async (req, res, next) => {
   try {
     const fullStats = await getFullStats();
 
-    res.send({
+    res.json({
       vm_count: fullStats.vmsCount,
       request_count: fullStats.requestCount,
       average_request_time: fullStats.averageRequestTime,

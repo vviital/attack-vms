@@ -9,8 +9,8 @@ const clickhouse = new ClickHouse({
   port: config.clickHousePort,
   debug: false,
   basicAuth: {
-    username: "default",
-    password: "",
+    username: config.clickHouseUsername,
+    password: config.clickHousePassword,
   },
   isUseGzip: false,
   format: "json",
