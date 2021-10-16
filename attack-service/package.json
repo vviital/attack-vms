@@ -25,7 +25,8 @@
     "http-errors": "^1.8.0",
     "kafkajs": "^1.15.0",
     "lodash": "^4.17.21",
-    "mongoose": "^6.0.11"
+    "mongoose": "^6.0.11",
+    "pino": "^7.0.2"
   },
   "devDependencies": {
     "prettier": "^2.4.1",

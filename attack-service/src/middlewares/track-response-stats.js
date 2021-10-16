@@ -1,5 +1,6 @@
 "use strict";
 
+const logger = require("pino")();
 const config = require("../config");
 const { sendStatsMessage } = require("../datasources/kafka");
 
@@ -14,7 +15,9 @@ function trackResponseStatsMiddleware(req, res, next) {
       serviceName: config.serviceName,
       url: req.path,
       elapsed: elapsedTimeInMs,
-    }).catch(console.error); // TODO: Replace by pino
+    }).catch((error) => {
+      logger.error("Cannot send stats message", { error });
+    });
   });
 
   next();

@@ -13,7 +13,7 @@ You need to follow next steps to have system up and running:
   - Call some endpoint via Postman or curl to be sure that everything is working and check ClickHouse.
 - Call any endpoint available in the app:
   - `curl --location --request GET 'http://localhost:8080/api/v1/stats'`
-  - `curl --location --request GET 'http://localhost:8080/api/v1/attack?vm_id=vm-a3660c'`
+  - `curl --location --request GET 'http://localhost:8080/api/v1/attack?vm_id=vm-ab51cba10'`
 
 ## How to run load tests
 

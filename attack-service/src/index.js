@@ -3,7 +3,8 @@
 const mongoose = require("mongoose");
 const kafka = require("./datasources/kafka");
 const express = require("express");
-const pino = require("express-pino-logger")();
+const pinoMiddleware = require("express-pino-logger")();
+const logger = require("pino")();
 const {
   trackResponseStatsMiddleware,
 } = require("./middlewares/track-response-stats");
@@ -12,7 +13,7 @@ const api = require("./v1");
 
 const app = express();
 
-app.use(pino);
+app.use(pinoMiddleware);
 app.use(trackResponseStatsMiddleware);
 app.use("/api/v1", api);
 
@@ -28,7 +29,7 @@ async function main() {
   await kafka.init();
 
   app.listen(config.port, () => {
-    console.log("Service is listening on", config.port);
+    logger.info("Service is listening on", config.port);
   });
 }
 
