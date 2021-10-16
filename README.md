@@ -28,6 +28,8 @@ Further steps that might be taken:
 - Introduce distributed cache for the methods (that works with databases) and endpoints in case if it's needed for performance reasons;
 - Introduce OpenAPI documentation for the implemented endpoints;
 - Add unit and e2e tests for the codebase;
+- Add ESLint for the project to ensure consistent code style;
+- Add CI/CD integration (e.g. Travis CI);
 - Introduce granular logging based on the configured log level;
 - Add monitoring system to collect logs;
 - etc.
