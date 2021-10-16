@@ -6,6 +6,8 @@ services:
       context: attack-service
     ports:
       - "8080:3000"
+    environment:
+      - MONGO_DB_URL=mongodb://mongo/attack-service
 
   uploader-service:
     build:
@@ -24,9 +26,6 @@ services:
       - "27017:27017"
     volumes:
       - mongodb:/data/db
-
-
-
 
 volumes:
   mongodb:

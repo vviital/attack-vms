@@ -1,21 +1,27 @@
 "use strict";
 
 const { Router } = require("express");
+const createError = require("http-errors");
+const { getAttackersVMIds } = require("../services/vm-service");
 
 const router = Router();
 
-router.get("/attack", (req, res) => {
-  const vmId = req.query.vm_id;
-  if (!vmId) {
-    return res
-      .status(400)
-      .json({ code: 400, message: "VM identifier is missing" });
-  }
+router.get("/attack", async (req, res, next) => {
+  try {
+    const vmId = req.query.vm_id;
+    if (!vmId) {
+      throw new createError(404, "VM identifier is missing");
+    }
 
-  res.json(["vm-c7bac01a07"]);
+    const ids = await getAttackersVMIds(vmId);
+
+    res.json(ids);
+  } catch (e) {
+    next(e);
+  }
 });
 
-router.get("/stats", (req, res) => {
+router.get("/stats", async (req, res) => {
   res.send({
     vm_count: 2,
     request_count: 1120232,
